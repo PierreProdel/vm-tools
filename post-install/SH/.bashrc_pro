@@ -25,6 +25,7 @@ alias shrink='rm -f ~/.xsession-errors* ; sudo apt-get autoremove ; sudo apt-get
 alias upd='sudo apt-get update ; sudo apt-get upgrade'
 alias upd-atom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
 alias op-docker-compose='xdg-open https://github.com/docker/compose/releases'
+alias cleanup='rm -rf ~/.local/share/Trash/* ; sudo rm -rf /tmp/* ; history -c'
 
 # Advanced aliases
 dsh() {
@@ -51,4 +52,5 @@ get-vm-tools() {
   cp -rf $infolder/* $outfolder
   cd -
   rm -rf /tmp/vmt
+  ~/vm-tools/SH/setup_bashrc.sh
 }
