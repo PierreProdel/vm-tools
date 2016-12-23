@@ -8,10 +8,11 @@ sudo echo "> Test droit sudo [OK]"
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
 # Install
-sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs build-essential
 
 # Upgrade NPM to last version
 sudo npm -g install npm
+
 
 # All done
 echo ---------------------------------------------------------------------------
