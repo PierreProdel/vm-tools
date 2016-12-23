@@ -40,10 +40,13 @@ get-vm-tools() {
   mkdir -p /tmp/vmt
   cd /tmp/vmt
   content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases`
-  rel=`echo $content | grep -o 'tag_name": "[^"]*"' | sed 's/"$//' | sed 's/^.*"//'`
-  file=$rel.tar.gz
+  rel=`echo $content | grep -m 1 -o 'tag_name": "[^"]*"' | sed 's/"$//' | sed 's/^.*"//'`
+  nrel=`echo $rel | sed -r 's/\s+.*$//'`
+  echo Downloading VM tools $nrel...
+  nrep=$rel
+  file=$nrel.tar.gz
   url=https://github.com/SogetiATC/vm-tools/archive/$file
-  wget $url
+  wget -nv $url
   tar zxf $file
   infolder=`find . -type d -name post-install`
   outfolder=~/vm-tools
@@ -52,5 +55,7 @@ get-vm-tools() {
   cp -rf $infolder/* $outfolder
   cd -
   rm -rf /tmp/vmt
-  ~/vm-tools/SH/install_bash.sh
+  cd ~/vm-tools/SH
+  ./install_bash.sh
+  cd -
 }
