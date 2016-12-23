@@ -23,13 +23,32 @@ alias dstartall='docker ps -a| sed "1 d" | awk '"'"'{print $1}'"'"' | xargs dock
 alias mountvm='sudo mkdir -p /shares ; sudo mount -t vmhgfs .host:/ /shares'
 alias shrink='rm -f ~/.xsession-errors* ; sudo apt-get autoremove ; sudo apt-get clean ; sudo vmware-toolbox-cmd disk shrink /'
 alias upd='sudo apt-get update ; sudo apt-get upgrade'
-alias updatom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
+alias upd-atom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
+alias op-docker-compose='xdg-open https://github.com/docker/compose/releases'
 
 # Advanced aliases
 dsh() {
   docker exec -it $1 bash
 }
 
-upddockercompose() {
+upd-docker-compose() {
   sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > ./docker-compose ; sudo cp ./docker-compose /usr/local/bin/docker-compose ; sudo chmod +x /usr/local/bin/docker-compose ; rm -f ./docker-compose
+}
+
+get-vm-tools() {
+  mkdir -p /tmp/vmt
+  cd /tmp/vmt
+  content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases`
+  rel=`echo $content | grep -o 'tag_name": "[^"]*"' | sed 's/"$//' | sed 's/^.*"//'`
+  file=$rel.tar.gz
+  url=https://github.com/SogetiATC/vm-tools/archive/$file
+  wget $url
+  tar zxf $file
+  infolder=`find . -type d -name post-install`
+  outfolder=~/vm-tools
+  rm -rf $outfolder
+  mkdir -p $outfolder
+  cp -rf $infolder/* $outfolder
+  cd -
+  rm -rf /tmp/vmt
 }
