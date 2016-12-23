@@ -52,5 +52,5 @@ get-vm-tools() {
   cp -rf $infolder/* $outfolder
   cd -
   rm -rf /tmp/vmt
-  ~/vm-tools/SH/setup_bashrc.sh
+  ~/vm-tools/SH/install_bashrc.sh
 }
