@@ -1,0 +1,35 @@
+
+
+# Add colors to shell
+export LS_OPTIONS='--color=auto'
+eval "`dircolors`"
+alias ls='ls $LS_OPTIONS'
+
+# Aliases
+alias ll='ls -al'
+alias rm='rm -i'
+
+# Aliases Docker
+alias dps='docker ps -a'
+alias dim='docker images'
+alias drm='docker ps -a|sed "1 d"|awk '"'"'{print $1}'"'"'|xargs docker rm'
+alias drmi='docker images|sed "1 d"|grep \<none\>|awk '"'"'{print $3}'"'"'|sort|uniq|xargs docker rmi'
+alias dstop='docker stop'
+alias dstart='docker start'
+alias dstopall='docker ps -a| sed "1 d" | awk '"'"'{print $1}'"'"' | xargs docker stop'
+alias dstartall='docker ps -a| sed "1 d" | awk '"'"'{print $1}'"'"' | xargs docker start'
+
+# Helpful aliases
+alias mountvm='sudo mkdir -p /shares ; sudo mount -t vmhgfs .host:/ /shares'
+alias shrink='rm -f ~/.xsession-errors* ; sudo apt-get autoremove ; sudo apt-get clean ; sudo vmware-toolbox-cmd disk shrink /'
+alias upd='sudo apt-get update ; sudo apt-get upgrade'
+alias updatom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
+
+# Advanced aliases
+dsh() {
+  docker exec -it $1 bash
+}
+
+upddockercompose() {
+  sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > ./docker-compose ; sudo cp ./docker-compose /usr/local/bin/docker-compose ; sudo chmod +x /usr/local/bin/docker-compose ; rm -f ./docker-compose
+}
