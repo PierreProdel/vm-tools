@@ -43,7 +43,6 @@ get-vm-tools() {
   rel=`echo $content | grep -m 1 -o 'tag_name": "[^"]*"' | sed 's/"$//' | sed 's/^.*"//'`
   nrel=`echo $rel | sed -r 's/\s+.*$//'`
   echo Downloading VM tools $nrel...
-  nrep=$rel
   file=$nrel.tar.gz
   url=https://github.com/SogetiATC/vm-tools/archive/$file
   wget -nv $url
