@@ -4,10 +4,10 @@ echo Installing Cycligent
 sudo echo "> Test droit sudo [OK]"
 
 # Download and install
-wget https://s3-us-west-2.amazonaws.com/cycligent-downloads/CycligentGitTool/installers/linux/x64/CycligentGitTool-0.4.1-linux-x64.deb
-sudo dpkg -i CycligentGitTool-0.4.1-linux-x64.deb
+wget https://s3-us-west-2.amazonaws.com/cycligent-downloads/CycligentGitTool/installers/linux/x64/CycligentGitTool-0.4.1-linux-x64.deb -O CycligentGitTool-linux-x64.deb
+sudo dpkg -i CycligentGitTool-linux-x64.deb
 sudo apt-get install -f
-rm -f CycligentGitTool-0.4.0-linux-x64.deb
+rm -f CycligentGitTool-linux-x64.deb
 
 # Create link for command
 target=/usr/bin/cycligent
