@@ -38,6 +38,12 @@ upd-docker-compose() {
 
 get-vm-tools() {
 
+  # Check that jq is installed
+  command -v jq >/dev/null 2>&1 || {
+    echo "jq is needed. Installing jq...";
+    sudo apt-get -y install jq
+  }
+
   # Fetch content from GitHub
   content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases/latest`
   url=`echo $content | jq -r ". | .tarball_url"`
