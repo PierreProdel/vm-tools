@@ -9,6 +9,7 @@ wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-
 
 # Install
 tar zxvf jdk-7u79-linux-x64.tar.gz
+sudo mkdir -p /usr/lib/jvm
 sudo cp -rf jdk1.7.0_79 /usr/lib/jvm/jdk-1.7.0_79-oracle
 rm -rf jdk1.7.0_79
 rm -f jdk-7u79-linux-x64.tar.gz
