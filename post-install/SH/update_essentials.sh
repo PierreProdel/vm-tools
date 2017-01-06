@@ -9,3 +9,4 @@ function install_tool {
 
 install_tool htop
 install_tool jq
+install_tool xdotool
