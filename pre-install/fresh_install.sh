@@ -59,6 +59,7 @@ echo "Keepass2 installed"
 echo "Installing KeeWeb"
 wget https://github.com/keeweb/keeweb/releases/download/v1.3.3/KeeWeb-1.3.3.linux.x64.deb
 sudo dpkg -i KeeWeb-1.3.3.linux.x64.deb
+sudo apt-get install xdotool -y
 echo "KeeWeb installed"
 
 # Chrome
