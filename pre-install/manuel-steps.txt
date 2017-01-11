@@ -13,3 +13,17 @@ Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session h
     saisir la combinaison Windows + L
 6.	Sourire parce qu’on locké sa session,
     mais c’est bon, le Super-l est enregistré
+
+--------------------------------------------------------------------------------
+ Disabling complexity check for password (not really relevant in VM)
+--------------------------------------------------------------------------------
+
+1. Open /etc/pam.d/common-password as root. It contains the configuration for
+   password check
+2. Look for the following line, responsible for the check:
+          password	[success=1 default=ignore]	pam_unix.so obscure sha512
+3. Remove the "obscure" setting to disable complexity check
+4. Add "minlen=X" to change minimum length contraint
+5. Example of line with new settings:
+          password	[success=1 default=ignore]	pam_unix.so sha512
+6. Enjoy simple password (don't share your VM though!)
