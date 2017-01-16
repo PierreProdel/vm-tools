@@ -5,36 +5,37 @@ echo Installing Eclipse
 sudo echo "> Test droit sudo [OK]"
 
 # Download and install
-wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz
-tar zxvf eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz
+wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz -O eclipse.tar.gz
+tar zxvf eclipse.tar.gz
 sudo cp -rf eclipse /usr/lib/eclipse-neon
-rm -f eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz
+rm -f eclipse.tar.gz
 rm -rf eclipse
 
 # Creates link for command
 if [ -f /usr/bin/eclipse ]
 then
-  sudo rm /usr/bin/eclipse
+  sudo rm -f /usr/bin/eclipse
 fi
 sudo ln -s /usr/lib/eclipse-neon/eclipse /usr/bin/eclipse
 
 # Tries to create desktop shortcut (does not work)
+echo "- Creates shortcut"
+sudo touch /usr/share/applications/eclipse.desktop
 sudo bash -c "cat > /usr/share/applications/eclipse.desktop" <<EOL
 [Desktop Entry]
-Encoding=UTF-8
-Exec=eclipse
-Icon=/usr/lib/eclipse-neon/eclipse/icon.xpm
+Version=Neon
 Type=Application
+Name=Eclipse Neon
+Icon=/usr/lib/eclipse-neon/icon.xpm
+Exec="/usr/bin/eclipse" %f
+Comment=The Drive to Develop
+Categories=Development;IDE;
 Terminal=false
-Comment=eclipse Integrated Development Environment
-Name=eclipse
-GenericName=eclipse
-StartupNotify=false
-Categories=Development;IDE;Java;
+StartupWMClass=Eclipse
 EOL
 
 # All done
 echo ---------------------------------------------------------------------------
-echo To start eclipse, look in the menu, use the command:
+echo To start eclipse, look in the menu, or use the command:
 echo $ eclipse&
 echo ---------------------------------------------------------------------------
