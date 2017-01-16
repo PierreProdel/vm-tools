@@ -8,6 +8,7 @@ alias ls='ls $LS_OPTIONS'
 # Aliases
 alias ll='ls -al'
 alias rm='rm -i'
+alias h='history'
 
 # Aliases Docker
 alias dps='docker ps -a'
@@ -24,19 +25,26 @@ alias mountvm='sudo mkdir -p /shares ; sudo mount -t vmhgfs .host:/ /shares'
 alias shrink='rm -f ~/.xsession-errors* ; sudo apt-get autoremove ; sudo apt-get clean ; sudo vmware-toolbox-cmd disk shrink /'
 alias upd='sudo apt-get update ; sudo apt-get upgrade'
 alias upd-atom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
+alias upd-docker-compose='func_upd-docker-compose'
 alias op-docker-compose='xdg-open https://github.com/docker/compose/releases'
 alias cleanup='rm -rf ~/.local/share/Trash/* ; sudo rm -rf /tmp/* ; rm -rf ~/vm-tools ; history -c'
+alias get-vm-tools='func_get-vm-tools'
 
 # Advanced aliases
 dsh() {
   docker exec -it $1 bash
 }
 
-upd-docker-compose() {
-  sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > ./docker-compose ; sudo cp ./docker-compose /usr/local/bin/docker-compose ; sudo chmod +x /usr/local/bin/docker-compose ; rm -f ./docker-compose
+func_upd-docker-compose() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: upd-docker-compose <docker-compose version>"
+    echo "Use op-docker-compose to get the latest version"
+  else
+    sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > ./docker-compose ; sudo cp ./docker-compose /usr/local/bin/docker-compose ; sudo chmod +x /usr/local/bin/docker-compose ; rm -f ./docker-compose
+  fi
 }
 
-get-vm-tools() {
+func_get-vm-tools() {
 
   # Check that jq is installed
   command -v jq >/dev/null 2>&1 || {
