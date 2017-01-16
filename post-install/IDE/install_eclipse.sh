@@ -5,7 +5,7 @@ echo Installing Eclipse
 sudo echo "> Test droit sudo [OK]"
 
 # Download and install
-wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/neon/1a/eclipse-jee-neon-1a-linux-gtk-x86_64.tar.gz -O eclipse.tar.gz
+wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/neon/2/eclipse-jee-neon-2-linux-gtk-x86_64.tar.gz -O eclipse.tar.gz
 tar zxvf eclipse.tar.gz
 sudo cp -rf eclipse /usr/lib/eclipse-neon
 rm -f eclipse.tar.gz
