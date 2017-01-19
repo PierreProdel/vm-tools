@@ -1,0 +1,52 @@
+alias get-vm-tools='func_get-vm-tools'
+
+func_get-vm-tools() {
+
+  # Check that jq is installed
+  command -v jq >/dev/null 2>&1 || {
+    echo "jq is needed. Installing jq...";
+    sudo apt-get -y install jq
+  }
+
+  # Fetch content from GitHub
+  content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases/latest`
+  url=`echo $content | jq -r ". | .tarball_url"`
+  version=`echo $content | jq -r ". | .tag_name"`
+  name=`echo $content | jq -r ". | .name"`
+  changelog=`echo $content | jq -r ". | .body"`
+  echo "########################################################################"
+  echo "#  Installing VM Tools $version (codename $name)"
+  echo "########################################################################"
+
+  # Download scripts from GitHub
+  mkdir -p /tmp/vmt
+  cd /tmp/vmt
+  file=vm-tools.tar.gz
+  wget -nv $url -O $file
+
+  # Untar and install scripts
+  tar zxf $file
+  infolder=`find . -type d -name post-install`
+  outfolder=~/vm-tools
+  rm -rf $outfolder
+  mkdir -p $outfolder
+  cp -rf $infolder/* $outfolder
+  cd -
+
+  # Cleanup temp files
+  rm -rf /tmp/vmt
+
+  # Install newest version of aliases and tools
+  cd ~/vm-tools/SH
+  ./update_essentials.sh
+  ./install_bash.sh
+  cd -
+
+  # All done
+  echo ""
+  echo "########################################################################"
+  echo "VM Tools updated to $version (codename $name)"
+  echo "Changelog :"
+  echo "$changelog"
+
+}
