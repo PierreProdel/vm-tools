@@ -14,6 +14,8 @@ else
   echo 'fi' >> ~/.bashrc
 fi
 
+cp -f .bashrc_vmtools ~/
+
 if grep -q "INCLUDE_VMTOOLS" "$HOME/.bashrc"
 then
   echo VM bash already setup, updating file...
