@@ -1,11 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 echo "- Installing Android studio"
 install_folder=/usr/lib
 
+sudo echo "> Test droit sudo [OK]"
+
 echo "- Installing unzip via apt-get"
 sudo apt-get install unzip
-
-sudo echo "> Test droit sudo [OK]"
 
 echo "- Downloading Android Studio"
 wget https://dl.google.com/dl/android/studio/ide-zips/2.2.3.0/android-studio-ide-145.3537739-linux.zip
