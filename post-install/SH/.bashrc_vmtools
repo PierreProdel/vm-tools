@@ -56,7 +56,14 @@ func_get-vm-tools() {
     echo "VM Tools updated to $version (codename $name)"
     echo "Changelog :"
     echo "$changelog"
-    echo "$version - $name" > ~/.vm-tools-version
+    echo "#################################################################" > ~/.vm-tools-version
+    echo "# vm-tools version : $version - $name" >> ~/.vm-tools-version
+    echo "# See https://github.com/SogetiATC/vm-tools for more information"  >> ~/.vm-tools-version
+    echo "# Aliases are documented in ~/.bashrc_pro" >> ~/.vm-tools-version
+    echo "#################################################################" >> ~/.vm-tools-version
 
   fi
 }
+
+# Display VM Tools info in terminal
+get-vm-tools -v
