@@ -10,6 +10,7 @@ wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-
 # Install
 tar zxvf jdk-8u112-linux-x64.tar.gz
 sudo mkdir -p /usr/lib/jvm
+sudo rm -rf /usr/lib/jvm/jdk-1.8.0_112-oracle
 sudo cp -rf jdk1.8.0_112 /usr/lib/jvm/jdk-1.8.0_112-oracle
 rm -rf jdk1.8.0_112
 rm -f jdk-8u112-linux-x64.tar.gz
