@@ -9,10 +9,10 @@ echo "- Installing unzip via apt-get"
 sudo apt-get install unzip
 
 echo "- Downloading Android Studio"
-wget https://dl.google.com/dl/android/studio/ide-zips/2.2.3.0/android-studio-ide-145.3537739-linux.zip
+wget https://dl.google.com/dl/android/studio/ide-zips/2.3.0.8/android-studio-ide-162.3764568-linux.zip -O as.zip
 echo "- Unpacking Android Studio"
-sudo unzip android-studio-ide-145.3537739-linux.zip -d ${install_folder}
-rm android-studio-ide-145.3537739-linux.zip
+sudo unzip as.zip -d ${install_folder}
+rm as.zip
 
 echo Linking command
 # Create links for command
@@ -29,7 +29,7 @@ echo "- Creates shortcut"
 sudo touch /usr/share/applications/android-studio.desktop
 sudo bash -c "cat > /usr/share/applications/android-studio.desktop" <<EOL
 [Desktop Entry]
-Version=2.2.3
+Version=2.3
 Type=Application
 Name=Android Studio
 Icon=${install_folder}/android-studio/bin/studio.png
