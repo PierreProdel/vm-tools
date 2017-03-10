@@ -41,7 +41,7 @@ EOL
 
 # All done
 echo ---------------------------------------------------------------------------
-echo To continue, edit ~/.profile and add or edit the following line:
+echo To continue, edit ~/.bashrc and add or edit the following line:
 echo export ANDROID_HOME=/home/sogeti/Android/Sdk
 echo export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
 echo To start Android studio, look in the menu, or use the command:

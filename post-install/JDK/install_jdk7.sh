@@ -27,6 +27,6 @@ sudo update-alternatives --config javac
 
 # All done
 echo ---------------------------------------------------------------------------
-echo To continue, edit ~/.profile and add or edit the following line:
+echo To continue, edit ~/.bashrc and add or edit the following line:
 echo export JAVA_HOME=/usr/lib/jvm/jdk7
 echo ---------------------------------------------------------------------------

@@ -21,7 +21,7 @@ sudo ln -s /opt/apache-maven-3.3.9 /opt/maven
 
 # All done
 echo ---------------------------------------------------------------------------
-echo To continue, edit ~/.profile and add or edit the following line:
+echo To continue, edit ~/.bashrc and add or edit the following line:
 echo export M2_HOME=/opt/apache-maven-3.3.9
 echo export M2=$M2_HOME/bin
 echo export PATH=$M2:$PATH
