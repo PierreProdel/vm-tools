@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+
+clear
 echo "- Installing SQuirreL SQL Client"
 install_folder=/usr/lib
 
-sudo echo "- Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 command -v java >/dev/null 2>&1 || {
   echo No java installation found, installing jdk8

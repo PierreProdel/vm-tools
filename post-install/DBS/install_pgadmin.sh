@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing PgAdmin3
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'

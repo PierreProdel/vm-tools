@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing PHP Composer
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 sudo apt-get install -y perl php5-cli
 

@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Visual Studio Code
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 wget https://az764295.vo.msecnd.net/stable/f9d0c687ff2ea7aabd85fb9a43129117c0ecf519/code_1.9.1-1486597190_amd64.deb -O vscode.deb

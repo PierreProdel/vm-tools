@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing NodeJS
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Downloading apt source list and install it
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -

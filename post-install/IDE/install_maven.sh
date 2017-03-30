@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Maven
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download the Apache Maven
 wget http://apache.spinellicreations.com/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz

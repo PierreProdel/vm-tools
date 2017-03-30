@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Oracle JDK 1.8
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Downloading with licence accepting
 wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
@@ -27,6 +28,6 @@ sudo update-alternatives --config javac
 
 # All done
 echo ---------------------------------------------------------------------------
-echo To continue, edit ~/.bashrc and add or edit the following line:
-echo export JAVA_HOME=/usr/lib/jvm/jdk8
+echo -e "To continue, edit \033[1m~/.bashrc_perso\033[0m and add or edit the following line:"
+echo -e "\033[31;1mexport JAVA_HOME=/usr/lib/jvm/jdk8\033[0m"
 echo ---------------------------------------------------------------------------

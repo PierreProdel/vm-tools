@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Eclipse
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 wget http://ftp.fau.de/eclipse/technology/epp/downloads/release/neon/2/eclipse-jee-neon-2-linux-gtk-x86_64.tar.gz -O eclipse.tar.gz

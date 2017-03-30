@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Mongo client
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927

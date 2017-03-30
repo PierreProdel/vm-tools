@@ -1,9 +1,10 @@
 #!/bin/bash
 
+clear
 echo "- Installing Android studio"
 install_folder=/usr/lib
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 echo "- Installing unzip via apt-get"
 sudo apt-get install unzip

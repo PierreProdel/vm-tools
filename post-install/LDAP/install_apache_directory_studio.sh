@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing Apache Directory Studio
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 wget http://apache.mindstudios.com/directory/studio/2.0.0.v20161101-M12/ApacheDirectoryStudio-2.0.0.v20161101-M12-linux.gtk.x86_64.tar.gz -O ads.tar.gz

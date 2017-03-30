@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+
+
+clear
 echo "- Installing IntelliJ"
 install_folder=/usr/lib
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Getting latest release data from https://www.jetbrains.com/updates/updates.xml in products -> IntelliJ IDEA -> IDEA_Release -> 1st build found
 build=$(wget -O - https://www.jetbrains.com/updates/updates.xml | grep -C 1 IDEA_Release | grep build)

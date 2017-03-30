@@ -28,6 +28,21 @@ else
   echo 'fi' >> ~/.bashrc
 fi
 
+if [ ! -f $HOME/.bashrc_perso ]; then
+  touch $HOME/.bashrc_perso
+fi
+
+if grep -q "INCLUDE_PERSO" "$HOME/.bashrc"
+then
+  echo Perso bash already setup...
+else
+  cp ~/.bashrc ~/.bashrc.orig
+  echo '' >> ~/.bashrc
+  echo '# INCLUDE_PERSO' >> ~/.bashrc
+  echo 'if [ -f $HOME/.bashrc_perso ]; then' >> ~/.bashrc
+  echo '  . $HOME/.bashrc_perso' >> ~/.bashrc
+  echo 'fi' >> ~/.bashrc
+fi
 
 # All done
 echo ---------------------------------------------------------------------------

@@ -1,8 +1,9 @@
 #!/bin/bash
 
+clear
 echo Installing NetBeans PHP
 
-sudo echo "> Test droit sudo [OK]"
+sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
 wget http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-php-linux-x64.sh -O netbeans_php.sh
