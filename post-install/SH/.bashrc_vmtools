@@ -5,7 +5,7 @@ func_get-vm-tools() {
   if [ "$#" -eq 1 ]; then
 
     if [ "$1" = "-v" ]; then
-      cat ~/.vm-tools-version
+      echo -e "$(cat ~/.vm-tools-version)"
     fi
 
   else
@@ -16,6 +16,8 @@ func_get-vm-tools() {
       sudo apt-get -y install jq
     }
 
+    clear
+
     # Fetch content from GitHub
     content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases/latest`
     url=`echo $content | jq -r ". | .tarball_url"`
@@ -23,7 +25,7 @@ func_get-vm-tools() {
     name=`echo $content | jq -r ". | .name"`
     changelog=`echo $content | jq -r ". | .body"`
     echo "########################################################################"
-    echo "#  Installing VM Tools $version (codename $name)"
+    echo -e "#  Installing VM Tools \033[34;1m$version\033[0m (codename \033[34;1m$name\033[0m)"
     echo "########################################################################"
 
     # Download scripts from GitHub
@@ -53,12 +55,12 @@ func_get-vm-tools() {
     # All done
     echo ""
     echo "########################################################################"
-    echo "VM Tools updated to $version (codename $name)"
+    echo -e "VM Tools updated to \033[34;1m$version\033[0m (codename \033[34;1m$name\033[0m)"
     echo "Changelog :"
-    echo "$changelog"
+    echo -e "\033[1m$changelog\033[0m"
     echo "#################################################################" > ~/.vm-tools-version
-    echo "# vm-tools version : $version - $name" >> ~/.vm-tools-version
-    echo "# See https://github.com/SogetiATC/vm-tools for more information"  >> ~/.vm-tools-version
+    echo "# vm-tools version : \033[32m$version - $name\033[0m" >> ~/.vm-tools-version
+    echo "# See \033[34mhttps://github.com/SogetiATC/vm-tools\033[0m for more information" >> ~/.vm-tools-version
     echo "# Aliases are documented in ~/.bashrc_pro" >> ~/.vm-tools-version
     echo "#################################################################" >> ~/.vm-tools-version
 
