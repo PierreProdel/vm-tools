@@ -27,3 +27,9 @@ Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session h
 5. Example of line with new settings:
           password	[success=1 default=ignore]	pam_unix.so sha512
 6. Enjoy simple password (don't share your VM though!)
+
+--------------------------------------------------------------------------------
+ Increase max file watches, useful for dev tools
+--------------------------------------------------------------------------------
+
+$ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
