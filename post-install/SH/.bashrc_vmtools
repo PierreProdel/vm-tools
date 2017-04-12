@@ -58,11 +58,17 @@ func_get-vm-tools() {
     echo -e "VM Tools updated to \033[34;1m$version\033[0m (codename \033[34;1m$name\033[0m)"
     echo "Changelog :"
     echo -e "\033[1m$changelog\033[0m"
-    echo "#################################################################" > ~/.vm-tools-version
-    echo "# vm-tools version : \033[32m$version - $name\033[0m" >> ~/.vm-tools-version
-    echo "# See \033[34mhttps://github.com/SogetiATC/vm-tools\033[0m for more information" >> ~/.vm-tools-version
-    echo "# Aliases are documented in ~/.bashrc_pro" >> ~/.vm-tools-version
-    echo "#################################################################" >> ~/.vm-tools-version
+    echo -e "##################################################################\033[34;1m" > ~/.vm-tools-version
+    echo '  ___    _______  ___   ________           ______       ' >> ~/.vm-tools-version
+    echo '  __ |  / /__   |/  /   ___  __/______________  /_______' >> ~/.vm-tools-version
+    echo '  __ | / /__  /|_/ /    __  /  _  __ \  __ \_  /__  ___/' >> ~/.vm-tools-version
+    echo '  __ |/ / _  /  / /     _  /   / /_/ / /_/ /  / _(__  ) ' >> ~/.vm-tools-version
+    echo '  _____/  /_/  /_/      /_/    \____/\____//_/  /____/  ' >> ~/.vm-tools-version
+    echo -e "\033[0m" >> ~/.vm-tools-version
+    echo "  vm-tools version : \033[32m$version - $name\033[0m" >> ~/.vm-tools-version
+    echo "  See \033[34mhttps://github.com/SogetiATC/vm-tools\033[0m for more information" >> ~/.vm-tools-version
+    echo "  Aliases are documented in ~/.bashrc_pro" >> ~/.vm-tools-version
+    echo "##################################################################" >> ~/.vm-tools-version
 
   fi
 }
