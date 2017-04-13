@@ -14,9 +14,13 @@ sudo apt-get install -y nodejs build-essential
 # Upgrade NPM to last version
 sudo npm -g install npm
 
+# Install npm essential tools
+sudo npm install -g grunt
+sudo npm install -g bower
 
 # All done
 echo ---------------------------------------------------------------------------
-echo Node `node -v` has been installed
-echo Npm `npm -v` has been installed
+echo node `node -v` has been installed
+echo npm `npm -v` has been installed
+echo bower `bower -v` has been installed
 echo ---------------------------------------------------------------------------
