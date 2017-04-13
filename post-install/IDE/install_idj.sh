@@ -20,7 +20,7 @@ rm ideaIC-${version}.tar.gz
 
 echo "- Linking folder"
 # Creates link for folder
-if [ -f ${install_folder}/intellij ]
+if [ -L ${install_folder}/intellij ]
 then
   sudo rm ${install_folder}/intellij
 fi
@@ -30,7 +30,7 @@ sudo /bin/bash -c 'echo "svn.executable.locale=C.UTF-8" >> /usr/lib/intellij/bin
 
 echo Linking command
 # Create links for command
-if [ -f /usr/bin/idea ]
+if [ -L /usr/bin/idea ]
 then
   sudo rm /usr/bin/idea
 fi
@@ -52,7 +52,7 @@ StartupWMClass=jetbrains-idea-ce
 EOL
 
 echo "- Below lines show previous installations you may want to remove"
-ls -l ${install_folder}/idea-IC-* | grep -v ${fullNumber}
+ls -ld ${install_folder}/idea-IC-* | grep -v ${fullNumber}
 
 # All done
 echo ---------------------------------------------------------------------------
