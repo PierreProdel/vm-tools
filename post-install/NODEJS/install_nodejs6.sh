@@ -24,6 +24,6 @@ echo ---------------------------------------------------------------------------
 echo node `node -v` has been installed
 echo npm `npm -v` has been installed
 echo bower `bower -v` has been installed
-echo bower `grunt` has been installed
-echo bower `gulp` has been installed
+echo bower `grunt --version` has been installed
+echo bower `gulp --version` has been installed
 echo ---------------------------------------------------------------------------
