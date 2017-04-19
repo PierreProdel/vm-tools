@@ -20,13 +20,10 @@ func_get-vm-tools() {
 
     # Fetch content from GitHub
 
-    curl -i https://api.github.com/users/whatever > github_headers
+    curl -is https://api.github.com/users/whatever > github_headers
     remaining_tokens=`grep X-RateLimit-Remaining: github_headers | sed -e "s/X-RateLimit-Remaining: //" | sed -e "s/\r//"`
-    echo "remaining_tokens: $remaining_tokens"
     reset_time=`echo $github_headers | grep X-RateLimit-Reset: github_headers | sed -e "s/X-RateLimit-Reset: //" | sed -e "s/\r//"`
-    echo "reset_time: $reset_time"
     reset_date=`date -d @$reset_time`
-    echo "$remaining_tokens remaining token on github, reset at $reset_date"
     if [ $remaining_tokens -gt 1 ]
     then
     {
