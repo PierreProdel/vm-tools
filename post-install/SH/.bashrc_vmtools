@@ -19,6 +19,27 @@ func_get-vm-tools() {
     clear
 
     # Fetch content from GitHub
+
+    curl -i https://api.github.com/users/whatever > github_headers
+    remaining_tokens=`grep X-RateLimit-Remaining: github_headers | sed -e "s/X-RateLimit-Remaining: //" | sed -e "s/\r//"`
+    echo "remaining_tokens: $remaining_tokens"
+    reset_time=`echo $github_headers | grep X-RateLimit-Reset: github_headers | sed -e "s/X-RateLimit-Reset: //" | sed -e "s/\r//"`
+    echo "reset_time: $reset_time"
+    reset_date=`date -d @$reset_time`
+    echo "$remaining_tokens remaining token on github, reset at $reset_date"
+    if [ $remaining_tokens -gt 1 ]
+    then
+    {
+        echo -e "[\033[32mOK\033[0m] $remaining_tokens github tokens remaining"
+    }
+    else
+    {
+        echo -e "[\033[31mERR\033[0m] No github token available. Try again after $reset_date"
+        return 1
+    }
+    fi
+    rm -f github_headers
+
     content=`curl -s https://api.github.com/repos/SogetiATC/vm-tools/releases/latest`
     url=`echo $content | jq -r ". | .tarball_url"`
     version=`echo $content | jq -r ". | .tag_name"`
