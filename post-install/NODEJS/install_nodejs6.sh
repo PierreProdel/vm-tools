@@ -15,12 +15,15 @@ sudo apt-get install -y nodejs build-essential
 sudo npm -g install npm
 
 # Install npm essential tools
-sudo npm install -g grunt
-sudo npm install -g bower
+sudo npm install -g bower bower-nexus3-resolver bower-npm-resolver
+sudo npm install -g grunt grunt-cli
+sudo npm install -g gulp gulp-cli
 
 # All done
 echo ---------------------------------------------------------------------------
 echo node `node -v` has been installed
 echo npm `npm -v` has been installed
 echo bower `bower -v` has been installed
+echo bower `grunt` has been installed
+echo bower `gulp` has been installed
 echo ---------------------------------------------------------------------------
