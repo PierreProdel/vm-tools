@@ -9,7 +9,22 @@ sudo echo 'deb http://download.opensuse.org/repositories/home:/cabelo/Debian_8.0
 sudo apt-get update
 sudo apt-get install owasp-zap
 
-# All done
+# Create desktop shortcut (does not work)
+echo "- Creates shortcut"
+sudo touch /usr/share/applications/zap.desktop
+sudo bash -c "cat > /usr/share/applications/zap.desktop" <<EOL
+[Desktop Entry]
+Version=Stable
+Type=Application
+Name=OWASP ZAP
+Icon=/usr/share/owasp-zap/zap.ico
+Exec="/usr/share/owasp-zap/zap.sh"
+Comment=The Drive to penetrate
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass="sun-awt-X11-XFramePeer", "OWASP ZAP"
+EOL
+
 # All done
 echo ---------------------------------------------------------------------------
 echo ZAP installed and integrated in launch menu
