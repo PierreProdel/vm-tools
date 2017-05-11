@@ -33,3 +33,13 @@ Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session h
 --------------------------------------------------------------------------------
 
 $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
+--------------------------------------------------------------------------------
+ Enable back/forward mouse buttons in the guest OS
+--------------------------------------------------------------------------------
+
+Open the .vmx file and add the following lines:
+
+mouse.vusb.enable = "TRUE"
+mouse.vusb.useBasicMouse = "FALSE"
+usb.generic.allowHID = "TRUE"
