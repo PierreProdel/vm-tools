@@ -21,7 +21,15 @@ alias dstart='docker start'
 alias dstopall='docker ps -a| sed "1 d" | awk '"'"'{print $1}'"'"' | xargs docker stop'
 alias dstartall='docker ps -a| sed "1 d" | awk '"'"'{print $1}'"'"' | xargs docker start'
 alias ddf='docker system df -v'
+
+# Docker compose
 alias dco='docker-compose'
+
+# Open a bash session in a container
+alias dsh='func_dsh'
+
+# Get host IP adress from a docker container
+alias dip='func_dip'
 alias docker-full-cleanup='func_full-cleanup-docker'
 
 # Helpful aliases
@@ -34,8 +42,12 @@ alias op-docker-compose='xdg-open https://github.com/docker/compose/releases'
 alias cleanup='rm -rf ~/.local/share/Trash/* ; sudo rm -rf /tmp/* ; rm -rf ~/vm-tools ; history -c'
 
 # Advanced aliases
-dsh() {
+func_dsh() {
   docker exec -it $1 bash
+}
+
+func_dip() {
+  docker exec $1 /sbin/ip route|awk '/default/ { print $3 }'
 }
 
 func_upd-docker-compose() {
