@@ -5,7 +5,16 @@ echo Installing PHP Composer
 
 sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
-sudo apt-get install -y perl php5-cli
+sudo apt-get install -y perl
+
+read -p "You need PHP installed first, which version do you want? [5/7] " choice
+choice=${choice:-7}
+
+if [ "$choice" == "7" ]; then
+    source ./install_php7.sh
+else
+    source ./install_php5.sh
+fi
 
 EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
