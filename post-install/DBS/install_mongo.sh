@@ -14,7 +14,7 @@ sudo apt-get -y install mongodb-org-shell mongodb-org-tools
 
 echo Installing Robomongo
 
-wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomongo.tar.gz
+wget https://download.robomongo.org/1.0.0/linux/robomongo-1.0.0-linux-x86_64-89f24ea.tar.gz -O robomongo.tar.gz
 tar zxvf robomongo.tar.gz
 rm -f robomongo.tar.gz
 untar_folder=`ls | grep robomongo`
