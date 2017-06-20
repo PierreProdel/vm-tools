@@ -66,3 +66,12 @@ Open the .vmx file and add the following lines:
 mouse.vusb.enable = "TRUE"
 mouse.vusb.useBasicMouse = "FALSE"
 usb.generic.allowHID = "TRUE"
+
+--------------------------------------------------------------------------------
+ Configure login screen
+--------------------------------------------------------------------------------
+
+1. Install lightdm-gtk-greeter-settings
+    $ sudo apt-get install -y lightdm-gtk-greeter-settings
+2. ???
+3. Profit
