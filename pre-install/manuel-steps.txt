@@ -1,5 +1,18 @@
 --------------------------------------------------------------------------------
- Disabling l key when using WIN-L shortcut
+ Enable sudo and disable root account
+--------------------------------------------------------------------------------
+
+Pour activer sudo
+1. Se connecter en root
+    $ su -
+2. Ajouter le user au group sudo
+    $ addgroup <user> sudo
+3. Redémarrer le système (le groupe n'est pas pris en compte en temps réel)
+4. Désactiver le compte root
+    $ sudo passwd -l root
+
+--------------------------------------------------------------------------------
+ Disabling l key when using WIN-L shortcut (Cinnamon)
 --------------------------------------------------------------------------------
 
 Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session hôte
@@ -9,9 +22,10 @@ Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session h
       -> Ajout de raccourci personnalisé
 4.	Saisir un Nom du genre Inhibition Windows + L sans saisir de Commande et
     appuyer sur la touche Echap (je sais, c’est moche mais ça marche ! ^^)
-5.	Dans la partie Combinaison de touches double-cliquer sur Non assigné pour
+5. Si echap ne marche pas, associer la commande 'ls' par exemple
+6.	Dans la partie Combinaison de touches double-cliquer sur Non assigné pour
     saisir la combinaison Windows + L
-6.	Sourire parce qu’on locké sa session,
+7.	Sourire parce qu’on locké sa session,
     mais c’est bon, le Super-l est enregistré
 
 --------------------------------------------------------------------------------
