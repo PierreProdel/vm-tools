@@ -1,4 +1,7 @@
-
+# Disable system bell
+if [ -n "$DISPLAY" ]; then
+  xset b off
+fi
 
 # Add colors to shell
 export LS_OPTIONS='--color=auto'
