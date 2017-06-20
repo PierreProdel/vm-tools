@@ -1,14 +1,23 @@
 --------------------------------------------------------------------------------
+ Disable grub timeout
+--------------------------------------------------------------------------------
+
+1. Update /etc/default/grub to set the GRUB_TIMEOUT to 0
+2. Update grub
+    $ sudo update-grub2
+
+--------------------------------------------------------------------------------
  Enable sudo and disable root account
 --------------------------------------------------------------------------------
 
-Pour activer sudo
-1. Se connecter en root
+To enable sudo
+1. login as root
     $ su -
-2. Ajouter le user au group sudo
+2. Add user to sudo group
     $ addgroup <user> sudo
-3. Redémarrer le système (le groupe n'est pas pris en compte en temps réel)
-4. Désactiver le compte root
+3. Restart the system to update the user group
+5. Check that sudo is working
+4. Disable root account
     $ sudo passwd -l root
 
 --------------------------------------------------------------------------------
