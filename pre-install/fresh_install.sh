@@ -33,7 +33,7 @@ sudo gpasswd -a $username docker
 sudo service docker start
 echo "And Docker-Compose 1.9.0 (Check if there's any update)."
 # Check here : https://docs.docker.com/compose/install/
-sudo curl -L https://github.com/docker/compose/releases/download/1.9.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > ./docker-compose
 sudo cp ./docker-compose /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 echo "Docker installed."
@@ -42,13 +42,6 @@ echo "Docker installed."
 echo "Installing Geany (nice text editor)"
 sudo apt-get -y install geany
 echo "Geany installed."
-
-# Atom
-echo "Installing Atom (another nice text editor)"
-wget https://atom.io/download/deb -O atom-amd64.deb
-sudo dpkg -i atom-amd64.deb
-sudo apt-get -y -f install
-echo "Atom installed."
 
 # Keepass
 echo "Installing Keepass2"
