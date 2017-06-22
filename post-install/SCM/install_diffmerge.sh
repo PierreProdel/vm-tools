@@ -6,7 +6,7 @@ echo Installing DiffMerge
 sudo echo -e "> Test droit sudo [\033[32mOK\033[0m]"
 
 # Download and install
-wget http://download-us.sourcegear.com/DiffMerge/4.2.0/diffmerge_4.2.0.697.stable_amd64.deb
+wget http://download.sourcegear.com/DiffMerge/4.2.0/diffmerge_4.2.0.697.stable_amd64.deb
 sudo dpkg -i diffmerge_4.2.0.697.stable_amd64.deb
 sudo apt-get install -f
 rm -f diffmerge_4.2.0.697.stable_amd64.deb
