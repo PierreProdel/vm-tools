@@ -1,5 +1,27 @@
 --------------------------------------------------------------------------------
- Disabling l key when using WIN-L shortcut
+ Disable grub timeout
+--------------------------------------------------------------------------------
+
+1. Update /etc/default/grub to set the GRUB_TIMEOUT to 0
+2. Update grub
+    $ sudo update-grub2
+
+--------------------------------------------------------------------------------
+ Enable sudo and disable root account
+--------------------------------------------------------------------------------
+
+To enable sudo
+1. login as root
+    $ su -
+2. Add user to sudo group
+    $ addgroup <user> sudo
+3. Restart the system to update the user group
+5. Check that sudo is working
+4. Disable root account
+    $ sudo passwd -l root
+
+--------------------------------------------------------------------------------
+ Disabling l key when using WIN-L shortcut (Cinnamon)
 --------------------------------------------------------------------------------
 
 Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session hôte
@@ -9,9 +31,10 @@ Pour inhiber le caractère l saisi lors d’un Windows+l de lock de la session h
       -> Ajout de raccourci personnalisé
 4.	Saisir un Nom du genre Inhibition Windows + L sans saisir de Commande et
     appuyer sur la touche Echap (je sais, c’est moche mais ça marche ! ^^)
-5.	Dans la partie Combinaison de touches double-cliquer sur Non assigné pour
+5. Si echap ne marche pas, associer la commande 'ls' par exemple
+6.	Dans la partie Combinaison de touches double-cliquer sur Non assigné pour
     saisir la combinaison Windows + L
-6.	Sourire parce qu’on locké sa session,
+7.	Sourire parce qu’on locké sa session,
     mais c’est bon, le Super-l est enregistré
 
 --------------------------------------------------------------------------------
@@ -43,3 +66,12 @@ Open the .vmx file and add the following lines:
 mouse.vusb.enable = "TRUE"
 mouse.vusb.useBasicMouse = "FALSE"
 usb.generic.allowHID = "TRUE"
+
+--------------------------------------------------------------------------------
+ Configure login screen
+--------------------------------------------------------------------------------
+
+1. Install lightdm-gtk-greeter-settings
+    $ sudo apt-get install -y lightdm-gtk-greeter-settings
+2. ???
+3. Profit
