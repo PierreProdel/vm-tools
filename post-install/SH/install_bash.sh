@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p ~/.bashrc.d
-cp -f *.bashrc ~/.bashrc.d/
+cp -f bashrc.d/*.bashrc ~/.bashrc.d/
 
 if [ -f ~/.bashrc_pro ]
 then
