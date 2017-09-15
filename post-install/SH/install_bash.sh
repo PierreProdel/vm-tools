@@ -1,35 +1,28 @@
 #!/bin/bash
 
-cp -f .bashrc_pro ~/
+mkdir -p ~/.bashrc.d
+cp -f *.bashrc ~/.bashrc.d/
 
-if grep -q "INCLUDE_PRO" "$HOME/.bashrc"
+if [ -f ~/.bashrc_pro ]
 then
-  echo Pro bash already setup, updating file...
-else
-  cp ~/.bashrc ~/.bashrc.orig
-  echo '' >> ~/.bashrc
-  echo '# INCLUDE_PRO' >> ~/.bashrc
-  echo 'if [ -f $HOME/.bashrc_pro ]; then' >> ~/.bashrc
-  echo '  . $HOME/.bashrc_pro' >> ~/.bashrc
-  echo 'fi' >> ~/.bashrc
+  rm -f ~/.bashrc_pro
 fi
 
-cp -f .bashrc_vmtools ~/
-
-if grep -q "INCLUDE_VMTOOLS" "$HOME/.bashrc"
+if [ -f ~/.bashrc_perso ]
 then
-  echo VM bash already setup, updating file...
-else
-  cp ~/.bashrc ~/.bashrc.orig
-  echo '' >> ~/.bashrc
-  echo '# INCLUDE_VMTOOLS' >> ~/.bashrc
-  echo 'if [ -f $HOME/.bashrc_vmtools ]; then' >> ~/.bashrc
-  echo '  . $HOME/.bashrc_vmtools' >> ~/.bashrc
-  echo 'fi' >> ~/.bashrc
+  rm -f ~/.bashrc_vmtools
 fi
 
-if [ ! -f $HOME/.bashrc_perso ]; then
-  touch $HOME/.bashrc_perso
+if grep -q "INCLUDE_BASHRCD" "$HOME/.bashrc"
+then
+  echo Bash already setup.
+else
+  echo '' >> ~/.bashrc
+  echo '# INCLUDE_BASHRCD' >> ~/.bashrc
+  echo 'for file in ~/.bashrc.d/*.bashrc;' >> ~/.bashrc
+  echo 'do' >> ~/.bashrc
+  echo '  source "$file"' >> ~/.bashrc
+  echo 'done' >> ~/.bashrc
 fi
 
 if grep -q "INCLUDE_PERSO" "$HOME/.bashrc"

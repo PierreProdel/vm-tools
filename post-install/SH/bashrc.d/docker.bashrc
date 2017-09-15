@@ -1,19 +1,3 @@
-# Disable system bell
-if [ -n "$DISPLAY" ]; then
-  xset b off
-fi
-
-# Add colors to shell
-export LS_OPTIONS='--color=auto'
-eval "`dircolors`"
-alias ls='ls $LS_OPTIONS'
-
-# Aliases
-alias ll='ls -al'
-alias rm='rm -i'
-alias h='history'
-alias r='source ~/.bashrc'
-
 # Aliases Docker
 alias dps='docker ps -a'
 alias dim='docker images'
@@ -27,6 +11,7 @@ alias ddf='docker system df -v'
 
 # Docker compose
 alias dco='docker-compose'
+alias komp='kompose'
 
 # Open a bash session in a container
 alias dsh='func_dsh'
@@ -35,14 +20,11 @@ alias dsh='func_dsh'
 alias dip='func_dip'
 alias docker-full-cleanup='func_full-cleanup-docker'
 
-# Helpful aliases
-alias mountvm='sudo mkdir -p /shares ; sudo mount -t vmhgfs .host:/ /shares'
-alias shrink='rm -f ~/.xsession-errors* ; sudo apt-get autoremove ; sudo apt-get clean ; sudo vmware-toolbox-cmd disk shrink /'
-alias upd='sudo apt-get update ; sudo apt-get upgrade'
-alias upd-atom='wget https://atom.io/download/deb -O atom-amd64.deb ; sudo dpkg -i atom-amd64.deb ; sudo apt-get -y -f install ; rm -f atom-amd64.deb'
-alias upd-docker-compose='func_upd-docker-compose'
-alias op-docker-compose='xdg-open https://github.com/docker/compose/releases'
-alias cleanup='rm -rf ~/.local/share/Trash/* ; sudo rm -rf /tmp/* ; rm -rf ~/vm-tools ; history -c'
+alias dco-upd='func_upd-docker-compose'
+alias dco-op='xdg-open https://github.com/docker/compose/releases'
+alias komp-upd='func_upd-kompose'
+alias komp-op='xdg-open https://github.com/kubernetes/kompose/releases'
+
 
 # Advanced aliases
 func_dsh() {
@@ -55,10 +37,21 @@ func_dip() {
 
 func_upd-docker-compose() {
   if [ "$#" -ne 1 ]; then
-    echo "Usage: upd-docker-compose <docker-compose version>"
-    echo "Use op-docker-compose to get the latest version"
+    echo "Usage: dco-upd <docker-compose version>"
+    echo "Use dco-op to get the latest version"
   else
-    sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > ./docker-compose ; sudo cp ./docker-compose /usr/local/bin/docker-compose ; sudo chmod +x /usr/local/bin/docker-compose ; rm -f ./docker-compose
+    sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+  fi
+}
+
+func_upd-kompose() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: komp-upd <kompose version>"
+    echo "Use komp-op to get the latest version"
+  else
+    sudo curl -L https://github.com/kubernetes/kompose/releases/download/v1.1.0/kompose-linux-amd64 -o /usr/local/bin/kompose
+    sudo chmod +x /usr/local/bin/kompose
   fi
 }
 
