@@ -40,7 +40,7 @@ func_upd-docker-compose() {
     echo "Usage: dco-upd <docker-compose version>"
     echo "Use dco-op to get the latest version"
   else
-    sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    sudo curl -L https://github.com/docker/compose/releases/download/$1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
   fi
 }
