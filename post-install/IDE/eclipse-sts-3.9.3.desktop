@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=eclipse-sts-3.9.3
+Exec=/home/sogeti/ide/eclipse/eclipse-sts-3.9.3/sts-bundle/sts-3.9.3.RELEASE/STS
+Type=Application
+Icon=/home/sogeti/ide/eclipse/eclipse-sts-3.9.3/sts-bundle/sts-3.9.3.RELEASE/icon.xpm
