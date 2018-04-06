@@ -12,7 +12,7 @@ tar zxvf eclipse.sts.tar.gz
 cp -rf sts-bundle /home/sogeti/ide/eclipse/eclipse-sts-3.9.3
 rm -rf sts-bundle
 rm -f eclipse.sts.tar.gz
-cp eclipse-sts-3.9.3.desktop /home/sogeti/Bureau
+cp /home/sogeti/vm-tools/IDE/eclipse-sts-3.9.3.desktop /home/sogeti/Bureau
 
 # All done
 echo ---------------------------------------------------------------------------
