@@ -18,7 +18,7 @@ sudo chmod +x -R ${UPDATE_DIR}
 echo "--- ADDING NEW CRON JOBS TO ROOT CRONTAB ---" |sudo tee -a ${CRON_LOG} > /dev/null
 
 # Add job to update apt packages
-JOB1="* * * * * $UPDATE_DIR/update_apt_packages.sh"
+JOB1="0 0 1 * * $UPDATE_DIR/update_apt_packages.sh"
 FINDJOB1=$(sudo crontab -l | grep -F "$JOB1")
 
 if [ -z "$FINDJOB1" ]
@@ -31,7 +31,7 @@ else
 fi
 
 # Add job to update clamav virus definition db
-JOB2="* * * * * $UPDATE_DIR/update_clamav_virus_def.sh"
+JOB2="0 0 1 * * $UPDATE_DIR/update_clamav_virus_def.sh"
 FINDJOB2=$(sudo crontab -l | grep -F "$JOB2")
 
 if [ -z "$FINDJOB2" ]
