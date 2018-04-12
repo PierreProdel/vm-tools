@@ -16,5 +16,5 @@ echo "--- UPDATING APT PACKAGES ---" |sudo tee -a ${LOG_UPDATE_VM} > /dev/null
 # update + upgrade
 sudo bash -c "apt-get update &>> ${LOG_UPDATE_VM}"
 sudo bash -c "apt-get -y upgrade &>> ${LOG_UPDATE_VM}"
-
+sudo bash -c "apt-get -y dist-upgrade &>> ${LOG_UPDATE_VM}"
 
