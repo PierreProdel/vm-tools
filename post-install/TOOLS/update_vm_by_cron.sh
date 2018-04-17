@@ -17,44 +17,44 @@ sudo chmod +x -R ${UPDATE_DIR}
 
 echo "--- ADDING NEW CRON JOBS TO ROOT CRONTAB ---" |sudo tee -a ${CRON_LOG} > /dev/null
 
-# Add job to update apt packages (every first day of the month at 21:00)
-CRON_PERIOD1="0 21 1 * *"
-JOB1="$CRON_PERIOD1 $UPDATE_DIR/update_apt_packages.sh"
-FINDJOB1=$(sudo crontab -l | grep -F "$JOB1")
+CRON_PERIOD1="@reboot"
+CRON_PERIOD2="0 12 * * *"
+CRON_PERIOD3="0 19 * * *"
 
+# Add jobs to update apt packages (every day at 12:00, 19:00, and on boot)
+SCRIPT_UPDATE_APT="update_apt_packages.sh"
+JOB1="$CRON_PERIOD1 $UPDATE_DIR/$SCRIPT_UPDATE_APT"
+JOB2="$CRON_PERIOD2 $UPDATE_DIR/$SCRIPT_UPDATE_APT"
+JOB3="$CRON_PERIOD3 $UPDATE_DIR/$SCRIPT_UPDATE_APT"
+
+FINDJOB1=$(sudo crontab -l | grep -F "$SCRIPT_UPDATE_APT")
 if [ -z "$FINDJOB1" ]
 then
   echo "ADD APT UPDATE JOB" |sudo tee -a ${CRON_LOG} > /dev/null
 
   (sudo crontab -l; echo "$JOB1") | sudo crontab -
+  (sudo crontab -l; echo "$JOB2") | sudo crontab -
+  (sudo crontab -l; echo "$JOB3") | sudo crontab -
 else
   echo "APT UPDATE JOB ALREADY EXISTS" | sudo tee -a ${CRON_LOG} > /dev/null
 fi
 
-# Add job to update clamav virus definition db (every monday at 21:00)
-CRON_PERIOD2="0 21 * * 1"
-JOB2="$CRON_PERIOD2 $UPDATE_DIR/update_clamav_virus_def.sh"
-FINDJOB2=$(sudo crontab -l | grep -F "$JOB2")
+# Add jobs to update clamav virus definition db (every day at 12:00, 19:00, and on boot)
+SCRIPT_UPDATE_CLAMAV="update_clamav_virus_def.sh"
+JOB4="$CRON_PERIOD1 $UPDATE_DIR/$SCRIPT_UPDATE_CLAMAV"
+JOB5="$CRON_PERIOD2 $UPDATE_DIR/$SCRIPT_UPDATE_CLAMAV"
+JOB6="$CRON_PERIOD3 $UPDATE_DIR/$SCRIPT_UPDATE_CLAMAV"
 
+FINDJOB2=$(sudo crontab -l | grep -F "$SCRIPT_UPDATE_CLAMAV")
 if [ -z "$FINDJOB2" ]
 then
   echo "ADD CLAMAV UPDATE JOB" | sudo tee -a ${CRON_LOG} > /dev/null
-  (sudo crontab -l; echo "$JOB2") | sudo crontab -
-else
-  echo "CLAMAV UPDATE JOB" | sudo tee -a ${CRON_LOG} > /dev/null
-fi
 
-# Add job to update clamav virus definition db (on reboot)
-CRON_PERIOD3="@reboot"
-JOB3="$CRON_PERIOD3 $UPDATE_DIR/update_clamav_virus_def.sh"
-FINDJOB3=$(sudo crontab -l | grep -F "$JOB3")
-
-if [ -z "$FINDJOB2" ]
-then
-  echo "ADD CLAMAV UPDATE JOB" | sudo tee -a ${CRON_LOG} > /dev/null
-  (sudo crontab -l; echo "$JOB3") | sudo crontab -
+  (sudo crontab -l; echo "$JOB4") | sudo crontab -
+  (sudo crontab -l; echo "$JOB5") | sudo crontab -
+  (sudo crontab -l; echo "$JOB6") | sudo crontab -
 else
-  echo "CLAMAV UPDATE JOB" | sudo tee -a ${CRON_LOG} > /dev/null
+  echo "CLAMAV UPDATE JOB ALREADY EXISTS" | sudo tee -a ${CRON_LOG} > /dev/null
 fi
 
 sudo echo " " |sudo tee -a ${CRON_LOG} > /dev/null
