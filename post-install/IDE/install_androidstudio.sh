@@ -10,7 +10,7 @@ echo "- Installing unzip via apt-get"
 sudo apt-get install unzip
 
 echo "- Downloading Android Studio"
-wget https://dl.google.com/dl/android/studio/ide-zips/2.3.0.8/android-studio-ide-162.3764568-linux.zip -O as.zip
+wget https://dl.google.com/dl/android/studio/ide-zips/3.1.3.0/android-studio-ide-173.4819257-linux.zip -O as.zip
 echo "- Unpacking Android Studio"
 sudo unzip as.zip -d ${install_folder}
 rm as.zip
